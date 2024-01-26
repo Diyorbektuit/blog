@@ -5,13 +5,15 @@
 {% block title %}Post List{% endblock %}
 
 {% block content %}
-  <h2>Post List</h2>
+  <h2 class="text-4xl font-bold mb-8">Post List</h2>
   <ul>
     {% for post in posts %}
-      <li>
-        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
-        <p>Author: {{ post.auther.username }}</p>
-
+      <li class="bg-white p-6 mb-6 shadow-md">
+        <a href="{% url 'posts:detail' pk=post.id %}" class="text-blue-500 font-bold text-2xl hover:underline">{{ post.title }}</a>
+        <p class="text-gray-700 mt-2">{{ post.body }}</p>
+        <p class="text-gray-600 mt-2">Author: {{ post.auther.username }}</p>
+        <p class="text-gray-600 mt-2">Created: {{ post.created }}</p>
+        <p class="text-gray-600 mt-2">Updated: {{ post.updated }}</p>
       </li>
     {% endfor %}
   </ul>
