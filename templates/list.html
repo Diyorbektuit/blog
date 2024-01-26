@@ -1,0 +1,18 @@
+<!-- list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Post List{% endblock %}
+
+{% block content %}
+  <h2>Post List</h2>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+        <p>Author: {{ post.auther.username }}</p>
+
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
