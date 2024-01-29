@@ -1,20 +1,17 @@
-<!-- list.html -->
+{% extends "base.html" %}
 
-{% extends 'base.html' %}
-
-{% block title %}Post List{% endblock %}
-
+{% block title %}
+    Bosh Sahifa
+{% endblock %}
 {% block content %}
-  <h2 class="text-4xl font-bold mb-8">Post List</h2>
-  <ul>
-    {% for post in posts %}
-      <li class="bg-white p-6 mb-6 shadow-md">
-        <a href="{% url 'posts:detail' pk=post.id %}" class="text-blue-500 font-bold text-2xl hover:underline">{{ post.title }}</a>
-        <p class="text-gray-700 mt-2">{{ post.body }}</p>
-        <p class="text-gray-600 mt-2">Author: {{ post.auther.username }}</p>
-        <p class="text-gray-600 mt-2">Created: {{ post.created }}</p>
-        <p class="text-gray-600 mt-2">Updated: {{ post.updated }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+    <h2 class="mt-3" >So'ngi maqolalar</h2>
+    <div class="cards" >
+        {% for post in posts %}
+            <div class="card mt-3 ">
+                <div class="card-body">
+                    {{post.title}}...<small>  <a class="text-muted" href="{{post.get_absolute_url}}">Read More</a></small>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
