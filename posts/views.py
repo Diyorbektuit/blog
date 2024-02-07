@@ -25,7 +25,7 @@ class PostCreateView(LoginRequiredMixin, generic.CreateView):
     fields = ["title", "body"]
 
     def form_valid(self, form):
-        form.instance.auther = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -41,7 +41,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
     def test_func(self):
         post = self.get_object()
         user = self.request.user
-        if user == post.auther:
+        if user == post.author:
             return True
         else:
             return False
@@ -59,7 +59,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
     def test_func(self):
         post = self.get_object()
         user = self.request.user
-        if user == post.auther:
+        if user == post.author:
             return True
         else:
             return False

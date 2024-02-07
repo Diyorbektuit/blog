@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
-    auther = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=123)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

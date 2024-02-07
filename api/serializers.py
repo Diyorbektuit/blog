@@ -22,8 +22,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    #auther = UserSerializer()
+    #author = UserSerializer()
     class Meta:
         model = Post
-        fields = ['id', 'auther', 'title', 'body', 'created', 'updated']
+        fields = ['id', 'author', 'title', 'body', 'created', 'updated']
         #depth = 1

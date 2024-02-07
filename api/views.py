@@ -4,7 +4,6 @@ from posts.models import Post
 from .serializers import PostSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .permissions import IsAuthorOrReadOnly
-# Create your views here.
 
 
 class PostListAPIView(generics.ListAPIView):
@@ -22,18 +21,28 @@ class PostCreateAPIView(generics.CreateAPIView):
 
 
 class PostDetailAPIView(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly,
+    ]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
 class PostDeleteAPIView(generics.DestroyAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly
+
+                          ]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
 class PostUpdateAPIView(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly
+    ]
     queryset = Post.objects.all()
     serializer_class = PostSerializer

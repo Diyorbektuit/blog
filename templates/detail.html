@@ -9,8 +9,8 @@
     <div class="card mt-3 ">
         <div class="card-body">
             {{post.body}}
-            <p> <small class="text-muted" > Posted at: {{post.created}} | Updated: {{post.updated}} | Author: {{post.auther}} </small> </p>
-            {% if post.auther == request.user %}
+            <p> <small class="text-muted" > Posted at: {{post.created}} | Updated: {{post.updated}} | Author: {{post.author}} </small> </p>
+            {% if post.author == request.user %}
                 <small class="text-muted" >
                     <a href="{% url 'posts:update'  post.id%}">Update</a>
                     <a href="{% url 'posts:delete' post.id %}">Delete</a>
